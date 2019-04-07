@@ -1,0 +1,42 @@
+
+<a data-ui-sref="home">Home</a> &lt; <span>Set up Budget Configuration</span>
+
+<br />
+
+<!--
+<categories categories="catList.categories"></categories>
+-->
+
+<div class="row" data-ng-controller="BudgetCategoryListController as vm">
+
+	<div class="col-md-6">
+	  <h3 class="h3">All Categories</h3>
+
+	  <span class="text-danger ng-cloak" data-ng-if="vm.setupCategory.length === 0">Nothing left to budget for.</span>
+
+	  <ol>
+	    <li class="ng-cloak" data-ng-repeat="category in vm.setupCategory">
+	      <button class="btn-info btn-xs" data-ng-click="vm.swap($index);">Add</button>
+	      {{category.name}}
+	    </li>
+	  </ol>
+	</div>
+
+	<div class="col-md-6">
+	  <h3 class="h3">My Categories</h3>
+
+	  <span class="text-danger" data-ng-if="vm.configuredCategory.length === 0">What do you want to start budgeting for?</span>
+
+	  <ol>
+	    <li class="ng-cloak" data-ng-repeat="configured in vm.configuredCategory">
+	      <button class="btn-warning btn-xs" data-ng-click="vm.restore($index);">Remove</button>
+	      {{configured.name}}
+	    </li>
+	  </ol>
+
+	  <div data-ng-if="vm.configuredCategory.length > 0">
+	  	<a data-ui-sref="history" class="btn-success btn-xs">Save</a>
+	  </div>
+	</div>
+
+</div>
